@@ -1,6 +1,17 @@
 package shyhub.vn.hub.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity // dinh nghia 1 class anh xa thanh table trong database
+// @Table(name = "Client") : anotation dinh nghia ten bang trong database
 public class User {
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // anotation dat id mac dinh tang theo cau hinh cua database |
+                                                        // vd : auto_increatment
+    @Id // anh xa trong khoa chinh cho table trong database
+    private long id;
     private String name;
     private String location;
     private String phone;
