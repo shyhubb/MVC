@@ -2,13 +2,15 @@ package shyhub.vn.hub.service;
 
 import java.util.List;
 
+import org.aspectj.apache.bcel.classfile.JavaClass;
+import org.aspectj.apache.bcel.util.Repository;
 import org.springframework.stereotype.Service;
 
 import shyhub.vn.hub.domain.User;
 import shyhub.vn.hub.repository.UserRepository;
 
 @Service
-public class UserService {
+public class UserService implements Repository {
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
@@ -38,6 +40,42 @@ public class UserService {
 
     public void deleteById(long id) { // xoa user bang id
         this.userRepository.deleteById(id);
+    }
+
+    @Override
+    public void clear() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'clear'");
+    }
+
+    @Override
+    public JavaClass findClass(String arg0) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findClass'");
+    }
+
+    @Override
+    public JavaClass loadClass(String arg0) throws ClassNotFoundException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'loadClass'");
+    }
+
+    @Override
+    public JavaClass loadClass(Class arg0) throws ClassNotFoundException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'loadClass'");
+    }
+
+    @Override
+    public void removeClass(JavaClass arg0) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removeClass'");
+    }
+
+    @Override
+    public void storeClass(JavaClass arg0) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'storeClass'");
     }
 
 }
