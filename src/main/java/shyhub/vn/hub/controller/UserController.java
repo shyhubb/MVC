@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import shyhub.vn.hub.domain.User;
@@ -35,10 +36,10 @@ public class UserController {
         return "admin/user/create";
     }
 
-    @RequestMapping(value = "/admin/user/register", method = RequestMethod.POST) // ham controller xu li dang ki
-    public String hehe(Model model, @ModelAttribute("newUser") User user) {
-        this.userService.handUser(user); // goi den method handel cua lop UserServie
-        return "index";
+    @PostMapping("/admin/user/register") // Xử lý đăng ký
+    public String registerUser(@ModelAttribute("newUser") User user) {
+        userService.handUser(user); // Gọi phương thức xử lý user
+        return "redirect:/admin/user/view"; // Chuyển hướng về trang danh sách user
     }
 
     @GetMapping("/admin/user/view")

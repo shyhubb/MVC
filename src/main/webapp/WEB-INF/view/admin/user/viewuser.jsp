@@ -38,11 +38,40 @@
                     tr:nth-child(even) {
                         background-color: #f9f9f9;
                     }
+
+                    .btn {
+                        padding: 5px 10px;
+                        border: none;
+                        cursor: pointer;
+                    }
+
+                    .btn-create {
+                        background-color: #28a745;
+                        color: white;
+                        padding: 10px;
+                        text-decoration: none;
+                        display: inline-block;
+                        margin-bottom: 10px;
+                    }
+
+                    .btn-update {
+                        background-color: #ffc107;
+                        color: white;
+                    }
+
+                    .btn-delete {
+                        background-color: #dc3545;
+                        color: white;
+                    }
                 </style>
             </head>
 
             <body>
                 <h2>Danh sách người dùng</h2>
+
+                <!-- Nút tạo người dùng mới -->
+                <a href="/admin/user" class="btn btn-create">Create User</a>
+
                 <table>
                     <thead>
                         <tr>
@@ -63,12 +92,17 @@
                                 <td>${user.phone}</td>
                                 <td>${user.email}</td>
                                 <td>
-                                    <button>Create</button>
-                                    <button>Update</button>
-                                    <button>Delete</button>
+                                    <!-- Nút Update -->
+                                    <a href="/admin/user/update/${user.id}" class="btn btn-update">Update</a>
+
+                                    <!-- Nút Delete -->
+                                    <form action="/admin/user/delete/${user.id}" method="post" style="display:inline;">
+                                        <input type="hidden" name="_method" value="delete" />
+                                        <button type="submit" class="btn btn-delete"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
-
                         </c:forEach>
                     </tbody>
                 </table>
