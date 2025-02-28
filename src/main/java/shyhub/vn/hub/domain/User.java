@@ -61,9 +61,14 @@ public class User {
         return password;
     }
 
+    public long getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "User{" +
+                "Id= " + id +
                 "name='" + name + '\'' +
                 ", location='" + location + '\'' +
                 ", phone='" + phone + '\'' +
