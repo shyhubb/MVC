@@ -19,6 +19,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findById(long id);
 
+    void deleteAllByIdInBatch(Iterable<Long> ids); // xoa so luong lon user bang list id
+
+    void deleteById(Long id); // xoa user theo id
+
     /*
      * 1 vai lenh query trong spring
      * Optional<User> findOneByActivationKey(String activationKey);

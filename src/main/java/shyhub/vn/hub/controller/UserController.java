@@ -81,4 +81,16 @@ public class UserController {
         userService.handUser(user);
         return "redirect:/admin/user/view"; // Chuyển hướng về trang danh sách user | khong redirect se bi miss data
     }
+
+    @PostMapping("/admin/user/delete/{id}")
+    public String deleteUser(Model model, @PathVariable long id) {
+        try {
+            userService.deleteById(id);
+            model.addAttribute("message", "User deleted successfully.");
+        } catch (Exception e) {
+            model.addAttribute("error", "Error deleting user.");
+        }
+        return "redirect:/admin/user/view";
+    }
+
 }

@@ -36,4 +36,8 @@ public class UserService {
         return this.userRepository.findById(id);
     }
 
+    public void deleteById(long id) { // xoa user bang id
+        this.userRepository.deleteById(id);
+    }
+
 }
