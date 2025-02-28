@@ -25,12 +25,15 @@ public class UserService {
 
     public List<User> getUser() {
         List<User> users = userRepository.findAll();
-        System.out.println(users);
         return users;
     }
 
     public List findUserById(String email) {
         return this.userRepository.findByEmail(email);
+    }
+
+    public User findById(long id) {
+        return this.userRepository.findById(id);
     }
 
 }
