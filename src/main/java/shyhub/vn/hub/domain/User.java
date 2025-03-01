@@ -1,3 +1,4 @@
+
 package shyhub.vn.hub.domain;
 
 import java.util.List;
@@ -11,72 +12,29 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-@Entity // dinh nghia 1 class anh xa thanh table trong database
+@Entity
 @Table(name = "users")
 public class User {
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // anotation dat id mac dinh tang theo cau hinh cua database |
-                                                        // vd : auto_increatment
-    @Id // anh xa trong khoa chinh cho table trong database
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private long id;
     private String name;
     private String location;
     private String phone;
     private String email;
     private String password;
-
     private String avata;
 
-    public User() {
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    // Many User - > to one -> role
+    // Quan hệ ManyToOne với Role
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
-    // relation to oder
-    @OneToMany(mappedBy = "user")
+
+    // Sửa lại mappedBy để tham chiếu tới thuộc tính "user" trong lớp Oder
+    @OneToMany(mappedBy = "user") // Tham chiếu đúng thuộc tính trong lớp Oder
     private List<Oder> oders;
 
+    // Getters và setters
     public long getId() {
         return id;
     }
@@ -85,12 +43,60 @@ public class User {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getAvata() {
         return avata;
     }
 
     public void setAvata(String avata) {
         this.avata = avata;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
@@ -104,5 +110,4 @@ public class User {
                 ", password='" + password + '\'' +
                 '}';
     }
-
 }

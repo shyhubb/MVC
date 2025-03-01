@@ -14,13 +14,13 @@ import jakarta.persistence.Table;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String name;
     private String description;
     @OneToMany(mappedBy = "role") // one role -> have n User
     private List<User> user;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

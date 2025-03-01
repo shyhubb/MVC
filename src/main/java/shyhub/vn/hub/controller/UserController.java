@@ -29,11 +29,7 @@ public class UserController {
 
     @GetMapping("/")
     public String showView(Model model) {
-        String res = userService.Handdelhello();
-        model.addAttribute("eric", res);
-        model.addAttribute("pi", 3.14);
-        System.out.println(userService.findUserById("shy@gmail.com"));
-        return "index";
+        return "admin/dashboard";
     }
 
     @GetMapping("/admin/user")

@@ -1,6 +1,7 @@
+
 package shyhub.vn.hub.domain;
 
-import org.hibernate.annotations.ManyToAny;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,36 +17,41 @@ import jakarta.persistence.Table;
 public class Oder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Long userId;
+    private long id;
+
     private double totalPrice;
 
-    @ManyToOne()
-    @JoinColumn(name = "user_id")
+    // Ánh xạ quan hệ ManyToOne với User
+    @ManyToOne
+    @JoinColumn(name = "user_id") // Cột user_id trong bảng oder
     private User user;
 
-    public Long getId() {
-        return id;
-    }
+    // Ánh xạ quan hệ OneToMany với OderDetail
+    @OneToMany(mappedBy = "oder")
+    private List<OderDetail> oderDetails;
 
-    public Long getUserId() {
-        return userId;
+    // Getters và setters
+    public long getId() {
+        return id;
     }
 
     public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
